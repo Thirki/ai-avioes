@@ -1,5 +1,28 @@
 import React from "react";
+import Box from "@mui/material/Box";
+import { SideMenu } from "./components/SideMenu";
+import { Table } from "./components/Table";
+import { Header } from "./components/Header";
+import { MainContent } from "./components/MainContent";
 
 export const App: React.FC = () => {
-  return <div>App</div>;
+  const [open, setOpen] = React.useState<boolean>(true);
+
+  const handleDrawerOpen = () => {
+    setOpen(true);
+  };
+
+  const handleDrawerClose = () => {
+    setOpen(false);
+  };
+
+  return (
+    <Box sx={{ display: "flex" }}>
+      <Header handleDrawerOpen={handleDrawerOpen} open={open} />
+      <SideMenu handleDrawerClose={handleDrawerClose} open={open} />
+      <MainContent open={open}>
+        <Table />
+      </MainContent>
+    </Box>
+  );
 };
