@@ -5,10 +5,10 @@ import TableRow from "@mui/material/TableRow";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import { ExpandRow } from "../ExpandRow";
-import { IRow } from "../types/tableTypes";
+import { ILeadsGroup } from "../types/tableTypes";
 
 interface IRowProps {
-  row: IRow;
+  row: ILeadsGroup;
 }
 
 export const Row: React.FC<IRowProps> = ({ row }) => {
@@ -27,12 +27,9 @@ export const Row: React.FC<IRowProps> = ({ row }) => {
           </IconButton>
         </TableCell>
         <TableCell component="th" scope="row">
-          {row.name}
+          {row.id}
         </TableCell>
-        <TableCell align="right">{row.calories}</TableCell>
-        <TableCell align="right">{row.fat}</TableCell>
-        <TableCell align="right">{row.carbs}</TableCell>
-        <TableCell align="right">{row.protein}</TableCell>
+        <TableCell>{row.groupName}</TableCell>
       </TableRow>
       {open && <ExpandRow row={row} open={open} />}
     </React.Fragment>

@@ -1,15 +1,14 @@
-interface IHistoryEntry {
-  date: string;
-  customerId: string;
-  amount: number;
+export interface ILeadsGroup {
+  groupName: string;
+  id: number;
+  leadsDetails: ILeadsDetails[];
 }
 
-export interface IRow {
-  name: string;
-  calories: number;
-  fat: number;
-  carbs: number;
-  protein: number;
-  price: number;
-  history: IHistoryEntry[];
+export interface ILeadsDetails {
+  id: number;
+  formId: number;
+  leadId: number;
+  phone: string;
+  email: string;
+  city: string;
 }

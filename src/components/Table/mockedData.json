@@ -1,14 +1,54 @@
 [
   {
-    "name": "Frozen yoghurt",
-    "calories": 159,
-    "fat": 6.0,
-    "carbs": 24,
-    "protein": 4.0,
-    "price": 3.99,
-    "history": [
-      { "date": "2020-01-05", "customerId": "11091700", "amount": 3 },
-      { "date": "2020-01-05", "customerId": "11091700", "amount": 3 }
+    "groupName": "Grupo A",
+    "id": 1,
+    "leadsDetails": [
+      {
+        "id": 101,
+        "formId": 1001,
+        "leadId": 2001,
+        "phone": "+5511999999999",
+        "email": "lead1@example.com",
+        "city": "São Paulo"
+      },
+      {
+        "id": 102,
+        "formId": 1002,
+        "leadId": 2002,
+        "phone": "+5511988888888",
+        "email": "lead2@example.com",
+        "city": "Rio de Janeiro"
+      }
+    ]
+  },
+  {
+    "groupName": "Grupo B",
+    "id": 2,
+    "leadsDetails": [
+      {
+        "id": 103,
+        "formId": 1003,
+        "leadId": 2003,
+        "phone": "+5511977777777",
+        "email": "lead3@example.com",
+        "city": "Belo Horizonte"
+      },
+      {
+        "id": 104,
+        "formId": 1004,
+        "leadId": 2004,
+        "phone": "+5511966666666",
+        "email": "lead4@example.com",
+        "city": "Curitiba"
+      },
+      {
+        "id": 105,
+        "formId": 1005,
+        "leadId": 2005,
+        "phone": "+5511955555555",
+        "email": "lead5@example.com",
+        "city": "Porto Alegre"
+      }
     ]
   }
 ]

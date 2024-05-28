@@ -14,17 +14,14 @@ export function Table() {
       <MuiTable aria-label="collapsible table">
         <TableHead>
           <TableRow>
-            <TableCell />
-            <TableCell>Dessert (100g serving)</TableCell>
-            <TableCell align="right">Calories</TableCell>
-            <TableCell align="right">Fat&nbsp;(g)</TableCell>
-            <TableCell align="right">Carbs&nbsp;(g)</TableCell>
-            <TableCell align="right">Protein&nbsp;(g)</TableCell>
+            <TableCell>Expandir</TableCell>
+            <TableCell>id</TableCell>
+            <TableCell>Form Id</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
-          {mocketData.map((row) => (
-            <Row key={row.name} row={row} />
+          {mocketData.map((data) => (
+            <Row key={data.id} row={data} />
           ))}
         </TableBody>
       </MuiTable>

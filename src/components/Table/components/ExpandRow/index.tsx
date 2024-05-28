@@ -7,10 +7,11 @@ import TableCell from "@mui/material/TableCell";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Typography from "@mui/material/Typography";
-import { IRow } from "../types/tableTypes";
+import { ILeadsGroup } from "../types/tableTypes";
+import { ActionButtons } from "../ActionButtons";
 
 interface IExpandRowProps {
-  row: IRow;
+  row: ILeadsGroup;
   open: boolean;
 }
 
@@ -21,27 +22,27 @@ export const ExpandRow: React.FC<IExpandRowProps> = ({ row, open }) => {
         <Collapse in={open} timeout="auto" unmountOnExit>
           <Box sx={{ margin: 1 }}>
             <Typography variant="h6" gutterBottom component="div">
-              History
+              Detalhes dos Leads:
             </Typography>
             <MuiTable size="small" aria-label="purchases">
               <TableHead>
                 <TableRow>
-                  <TableCell>Date</TableCell>
-                  <TableCell>Customer</TableCell>
-                  <TableCell align="right">Amount</TableCell>
-                  <TableCell align="right">Total price ($)</TableCell>
+                  <TableCell>id</TableCell>
+                  <TableCell>Telefone</TableCell>
+                  <TableCell>E-mail</TableCell>
+                  <TableCell>Cidade</TableCell>
+                  <TableCell align="center">Actions</TableCell>
                 </TableRow>
               </TableHead>
               <TableBody>
-                {row.history.map((historyRow) => (
-                  <TableRow key={historyRow.date}>
-                    <TableCell component="th" scope="row">
-                      {historyRow.date}
-                    </TableCell>
-                    <TableCell>{historyRow.customerId}</TableCell>
-                    <TableCell align="right">{historyRow.amount}</TableCell>
-                    <TableCell align="right">
-                      {Math.round(historyRow.amount * row.price * 100) / 100}
+                {row.leadsDetails.map((leadDetail) => (
+                  <TableRow key={leadDetail.id}>
+                    <TableCell>{leadDetail.id}</TableCell>
+                    <TableCell>{leadDetail.phone}</TableCell>
+                    <TableCell>{leadDetail.email}</TableCell>
+                    <TableCell>{leadDetail.city}</TableCell>
+                    <TableCell align="center">
+                      <ActionButtons leadsDatails={leadDetail} />
                     </TableCell>
                   </TableRow>
                 ))}
