@@ -1,5 +1,6 @@
 import React from "react";
 import { DrawerHeader, Main } from "./styles";
+import { useLeadsContext } from "../../context/hooks/useLeadsContext";
 
 interface IMainContentProps {
   children: React.ReactNode;
@@ -10,8 +11,9 @@ export const MainContent: React.FC<IMainContentProps> = ({
   children,
   open,
 }) => {
+  const { drawerWidth } = useLeadsContext();
   return (
-    <Main open={open}>
+    <Main open={open} drawerWidth={drawerWidth}>
       <DrawerHeader />
       {children}
     </Main>

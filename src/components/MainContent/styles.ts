@@ -1,11 +1,11 @@
 import { styled } from "@mui/material/styles";
-import { drawerWidth } from "../Header";
 
 export const Main = styled("main", {
   shouldForwardProp: (prop) => prop !== "open",
 })<{
   open?: boolean;
-}>(({ theme, open }) => ({
+  drawerWidth?: number;
+}>(({ theme, open, drawerWidth }) => ({
   flexGrow: 1,
   padding: theme.spacing(3),
   transition: theme.transitions.create("margin", {

@@ -13,8 +13,7 @@ import ListItemText from "@mui/material/ListItemText";
 import InboxIcon from "@mui/icons-material/MoveToInbox";
 import MailIcon from "@mui/icons-material/Mail";
 import { DrawerHeader } from "../MainContent/styles";
-
-const drawerWidth = 240;
+import { useLeadsContext } from "../../context/hooks/useLeadsContext";
 
 interface ISideMenuProps {
   handleDrawerClose: () => void;
@@ -26,6 +25,7 @@ export const SideMenu: React.FC<ISideMenuProps> = ({
   open,
 }) => {
   const theme = useTheme();
+  const { drawerWidth } = useLeadsContext();
 
   return (
     <Drawer

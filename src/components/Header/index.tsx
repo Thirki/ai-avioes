@@ -1,42 +1,20 @@
 import React from "react";
-import { styled } from "@mui/material/styles";
-import MuiAppBar, { AppBarProps as MuiAppBarProps } from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
-
-interface AppBarProps extends MuiAppBarProps {
-  open?: boolean;
-}
-
-export const drawerWidth = 240;
+import { useLeadsContext } from "../../context/hooks/useLeadsContext";
+import { AppBar } from "./styles";
 
 interface IHeaderProps {
   handleDrawerOpen: () => void;
   open: boolean;
 }
 
-const AppBar = styled(MuiAppBar, {
-  shouldForwardProp: (prop) => prop !== "open",
-})<AppBarProps>(({ theme, open }) => ({
-  transition: theme.transitions.create(["margin", "width"], {
-    easing: theme.transitions.easing.sharp,
-    duration: theme.transitions.duration.leavingScreen,
-  }),
-  ...(open && {
-    width: `calc(100% - ${drawerWidth}px)`,
-    marginLeft: `${drawerWidth}px`,
-    transition: theme.transitions.create(["margin", "width"], {
-      easing: theme.transitions.easing.easeOut,
-      duration: theme.transitions.duration.enteringScreen,
-    }),
-  }),
-}));
-
 export const Header: React.FC<IHeaderProps> = ({ handleDrawerOpen, open }) => {
+  const { drawerWidth } = useLeadsContext();
   return (
-    <AppBar position="fixed" open={open}>
+    <AppBar position="fixed" open={open} drawerWidth={drawerWidth}>
       <Toolbar>
         <IconButton
           color="inherit"
