@@ -8,13 +8,13 @@ interface IMyContextProviderProps {
 export const LeadsContextProvider: React.FC<IMyContextProviderProps> = ({
   children,
 }) => {
-  const drawerWidth = 240;
+  const drawerwidth = 240;
 
   const value = useMemo(
     () => ({
-      drawerWidth,
+      drawerwidth,
     }),
-    [drawerWidth]
+    [drawerwidth]
   );
 
   return (

@@ -1,7 +1,7 @@
 import { createContext } from "react";
 
 interface ILeadsContextType {
-  drawerWidth?: number;
+  drawerwidth?: number;
 }
 
 export const LeadsContext = createContext<ILeadsContextType>({});

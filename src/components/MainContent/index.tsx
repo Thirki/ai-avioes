@@ -11,9 +11,9 @@ export const MainContent: React.FC<IMainContentProps> = ({
   children,
   open,
 }) => {
-  const { drawerWidth } = useLeadsContext();
+  const { drawerwidth } = useLeadsContext();
   return (
-    <Main open={open} drawerWidth={drawerWidth}>
+    <Main open={open} drawerwidth={drawerwidth}>
       <DrawerHeader />
       {children}
     </Main>

@@ -25,15 +25,15 @@ export const SideMenu: React.FC<ISideMenuProps> = ({
   open,
 }) => {
   const theme = useTheme();
-  const { drawerWidth } = useLeadsContext();
+  const { drawerwidth } = useLeadsContext();
 
   return (
     <Drawer
       sx={{
-        width: drawerWidth,
+        width: drawerwidth,
         flexShrink: 0,
         "& .MuiDrawer-paper": {
-          width: drawerWidth,
+          width: drawerwidth,
           boxSizing: "border-box",
         },
       }}

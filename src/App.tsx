@@ -5,6 +5,9 @@ import { Table } from "./components/Table";
 import { Header } from "./components/Header";
 import { MainContent } from "./components/MainContent";
 import { LeadsContextProvider } from "./context/LeadsContextProvider";
+import { makeServer } from "./api/server";
+
+const hasByPass = true;
 
 export const App: React.FC = () => {
   const [open, setOpen] = React.useState<boolean>(true);
@@ -16,6 +19,12 @@ export const App: React.FC = () => {
   const handleDrawerClose = () => {
     setOpen(false);
   };
+
+  if (import.meta.env.MODE === "development" || hasByPass) {
+    const fullUrl = import.meta.url.split("/");
+    const formatedUrl = `${fullUrl[0]}//${fullUrl[2]}`;
+    makeServer({ environment: formatedUrl });
+  }
 
   return (
     <LeadsContextProvider>
