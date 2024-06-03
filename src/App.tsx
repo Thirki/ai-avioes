@@ -5,7 +5,9 @@ import { Table } from "./components/Table";
 import { Header } from "./components/Header";
 import { MainContent } from "./components/MainContent";
 import { LeadsContextProvider } from "./context/LeadsContextProvider";
-import { makeServer } from "./api/server";
+import { makeServer } from "./api";
+import { queryClient } from "./lib";
+import { QueryClientProvider } from "@tanstack/react-query";
 
 const hasByPass = true;
 
@@ -27,14 +29,16 @@ export const App: React.FC = () => {
   }
 
   return (
-    <LeadsContextProvider>
-      <Box sx={{ display: "flex" }}>
-        <Header handleDrawerOpen={handleDrawerOpen} open={open} />
-        <SideMenu handleDrawerClose={handleDrawerClose} open={open} />
-        <MainContent open={open}>
-          <Table />
-        </MainContent>
-      </Box>
-    </LeadsContextProvider>
+    <QueryClientProvider client={queryClient}>
+      <LeadsContextProvider>
+        <Box sx={{ display: "flex" }}>
+          <Header handleDrawerOpen={handleDrawerOpen} open={open} />
+          <SideMenu handleDrawerClose={handleDrawerClose} open={open} />
+          <MainContent open={open}>
+            <Table />
+          </MainContent>
+        </Box>
+      </LeadsContextProvider>
+    </QueryClientProvider>
   );
 };
