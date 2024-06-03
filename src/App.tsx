@@ -1,13 +1,10 @@
 import React from "react";
 import Box from "@mui/material/Box";
-import { SideMenu } from "./components/SideMenu";
-import { Table } from "./components/Table";
-import { Header } from "./components/Header";
-import { MainContent } from "./components/MainContent";
 import { LeadsContextProvider } from "./context/LeadsContextProvider";
 import { makeServer } from "./api";
 import { queryClient } from "./lib";
 import { QueryClientProvider } from "@tanstack/react-query";
+import { Header, MainContent, SideMenu, Table } from "./components";
 
 const hasByPass = true;
 

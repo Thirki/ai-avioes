@@ -6,7 +6,7 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import mocketData from "./mockedData.json";
-import { Row } from "./components/Row";
+import { Row } from "./components";
 
 export function Table() {
   return (
