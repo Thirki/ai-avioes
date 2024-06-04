@@ -14,7 +14,7 @@ export function Table() {
   const { data, isLoading } = useGetLeads();
   return (
     <TableContainer component={Paper}>
-      <MuiTable aria-label="collapsible table">
+      <MuiTable size="medium" aria-label="a dense table">
         <TableHead>
           <TableRow>
             <TableCell style={{ whiteSpace }}>Expandir</TableCell>

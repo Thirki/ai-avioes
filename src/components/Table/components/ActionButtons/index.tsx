@@ -5,6 +5,8 @@ import FileCopyIcon from "@mui/icons-material/FileCopy";
 import Refresh from "@mui/icons-material/Refresh";
 import { ILeadDetail, useReprocessingLead } from "../../../../api";
 import { Wrapper } from "./style";
+import { toast } from "react-toastify";
+import { queryClient } from "../../../../lib";
 
 interface IActionButtonsProps {
   leadsDetails: ILeadDetail;
@@ -15,14 +17,14 @@ export const ActionButtons: React.FC<IActionButtonsProps> = ({
 }) => {
   const [enableFetching, setEnableFetching] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
-  const { data, refetch, isFetching } = useReprocessingLead(
+  const { data, refetch, isFetching, isFetched, key } = useReprocessingLead(
     leadsDetails.id,
     enableFetching
   );
 
   const handleCopy = () => {
     navigator.clipboard.writeText(JSON.stringify(leadsDetails));
-    // @TODO: add sucess alert
+    toast.info("Leads copiado para área de transferencia.");
   };
 
   const handleReprocessing = () => {
@@ -33,15 +35,25 @@ export const ActionButtons: React.FC<IActionButtonsProps> = ({
   };
 
   useEffect(() => {
-    if (data?.sucess) {
-      setIsSuccess(true);
-      // @TODO: adicionar modal para tratar erro e sucesso
-      console.log("sucess");
-      return;
+    if (isFetched) {
+      if (data?.sucess) {
+        setIsSuccess(true);
+        toast.success("Leads reprocessado com sucesso.");
+        return;
+      }
+      setIsSuccess(false);
+      toast.error(
+        "Erro ao reprocessar leads, Nome invalido, e-mail mal formatado",
+        { autoClose: 10000 }
+      );
     }
-    setIsSuccess(false);
-    console.log("errors");
-  }, [data]);
+  }, [data, isFetched]);
+
+  useEffect(() => {
+    return () => {
+      queryClient.removeQueries({ queryKey: [key] });
+    };
+  }, [key]);
 
   return (
     <Wrapper>

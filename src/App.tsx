@@ -5,6 +5,8 @@ import { makeServer } from "./api";
 import { queryClient } from "./lib";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { Header, MainContent, SideMenu, Table } from "./components";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const hasByPass = true;
 
@@ -27,6 +29,7 @@ export const App: React.FC = () => {
 
   return (
     <QueryClientProvider client={queryClient}>
+      <ToastContainer />
       <LeadsContextProvider>
         <Box sx={{ display: "flex" }}>
           <Header handleDrawerOpen={handleDrawerOpen} open={open} />

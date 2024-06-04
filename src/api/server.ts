@@ -101,7 +101,7 @@ export function makeServer({ environment = "test" }) {
     },
 
     seeds(server) {
-      server.createList("leadsGroup", 20);
+      server.createList("leadsGroup", 1);
       server.createList("leadDetail", 9);
     },
   });

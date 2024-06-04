@@ -16,9 +16,16 @@ const fetchLeadsGroup = (leadId: string) =>
 
 export function useReprocessingLead(leadId: string, enabled = false) {
   const reprocessingLeadQueryKey = `reprocessingLead-${leadId}`;
-  return useQuery({
+  const { data, refetch, isFetching, isFetched } = useQuery({
     queryKey: [reprocessingLeadQueryKey],
     queryFn: () => fetchLeadsGroup(leadId),
     enabled,
   });
+  return {
+    data,
+    refetch,
+    isFetching,
+    isFetched,
+    key: reprocessingLeadQueryKey,
+  };
 }
