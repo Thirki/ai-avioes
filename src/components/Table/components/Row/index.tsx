@@ -5,11 +5,14 @@ import TableRow from "@mui/material/TableRow";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import { ExpandRow } from "../ExpandRow";
-import { ILeadsGroup } from "../types/tableTypes";
+import { LeadsGroup } from "../../../../api";
+import { Time } from "../../../Time";
 
 interface IRowProps {
-  row: ILeadsGroup;
+  row: LeadsGroup;
 }
+
+const whiteSpace = "nowrap";
 
 export const Row: React.FC<IRowProps> = ({ row }) => {
   const [open, setOpen] = React.useState(false);
@@ -26,12 +29,22 @@ export const Row: React.FC<IRowProps> = ({ row }) => {
             {open ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
           </IconButton>
         </TableCell>
-        <TableCell component="th" scope="row">
+        <TableCell style={{ whiteSpace }} component="th" scope="row">
           {row.id}
         </TableCell>
-        <TableCell>{row.groupName}</TableCell>
+        <TableCell style={{ whiteSpace }}>{row.name}</TableCell>
+        <TableCell style={{ whiteSpace }}>{row.source}</TableCell>
+        <TableCell style={{ whiteSpace }}>{row.totalLeads}</TableCell>
+        <TableCell style={{ whiteSpace }}>{row.invalidLeads}</TableCell>
+        <TableCell style={{ whiteSpace }}>
+          <Time date={new Date(row.createdAt)} />
+        </TableCell>
+        <TableCell style={{ whiteSpace }}>
+          <Time date={new Date(row.updatedAt)} />
+        </TableCell>
+        <TableCell style={{ whiteSpace }}>{row.status}</TableCell>
       </TableRow>
-      {open && <ExpandRow row={row} open={open} />}
+      {open && <ExpandRow id={row.id} open={open} />}
     </React.Fragment>
   );
 };

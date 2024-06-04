@@ -5,26 +5,38 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-import mocketData from "./mockedData.json";
-import { Row } from "./components";
+import { Row, SkeletonRow } from "./components";
+import { useGetLeads } from "../../api";
+
+const whiteSpace = "nowrap";
 
 export function Table() {
+  const { data, isLoading } = useGetLeads();
   return (
     <TableContainer component={Paper}>
       <MuiTable aria-label="collapsible table">
         <TableHead>
           <TableRow>
-            <TableCell>Expandir</TableCell>
-            <TableCell>id</TableCell>
-            <TableCell>Form Id</TableCell>
+            <TableCell style={{ whiteSpace }}>Expandir</TableCell>
+            <TableCell style={{ whiteSpace }}>ID do Grupo</TableCell>
+            <TableCell style={{ whiteSpace }}>Nome do Grupo</TableCell>
+            <TableCell style={{ whiteSpace }}>Fonte</TableCell>
+            <TableCell style={{ whiteSpace }}>Número de Leads</TableCell>
+            <TableCell style={{ whiteSpace }}>Leads Inválidos</TableCell>
+            <TableCell style={{ whiteSpace }}>Data de Criação</TableCell>
+            <TableCell style={{ whiteSpace }}>Última Atualização</TableCell>
+            <TableCell style={{ whiteSpace }}>Status</TableCell>
           </TableRow>
         </TableHead>
-        <TableBody>
-          {mocketData.map((data) => (
-            <Row key={data.id} row={data} />
-          ))}
-        </TableBody>
+        {!isLoading && (
+          <TableBody>
+            {data?.map((data) => (
+              <Row key={data.id} row={data} />
+            ))}
+          </TableBody>
+        )}
       </MuiTable>
+      {isLoading && <SkeletonRow />}
     </TableContainer>
   );
 }

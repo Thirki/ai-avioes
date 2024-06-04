@@ -14,20 +14,7 @@ export type LeadsGroup = {
   issueSummary: string;
 };
 
-export type LeadDetail = {
-  id: string;
-  fullName: string;
-  email: string;
-  phone: string;
-  city: string;
-  state: string;
-  issues: string;
-  createdAt: Date;
-  status: "Valid" | "Invalid";
-  comments?: string;
-};
-
-export const fetchLeadsGroup = () =>
+const fetchLeadsGroup = () =>
   fetch("/api/leadsGroup").then<LeadsGroup[]>((r) => r.json());
 
 export function useGetLeads() {
