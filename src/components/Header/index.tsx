@@ -26,7 +26,7 @@ export const Header: React.FC<IHeaderProps> = ({ handleDrawerOpen, open }) => {
           <MenuIcon />
         </IconButton>
         <Typography variant="h6" noWrap component="div">
-          Persistent drawer
+          Agrupamento Regional de Leads
         </Typography>
       </Toolbar>
     </AppBar>
