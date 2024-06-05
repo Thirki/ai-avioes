@@ -2,7 +2,6 @@ import { createServer, Model, Factory } from "miragejs";
 import { faker } from "@faker-js/faker";
 import { LeadsGroup } from "./hooks/useGetLeads";
 import { ILeadDetail } from "./hooks";
-import { Response } from "miragejs";
 
 const leadsGroupsStatusOptions = ["Processing", "Completed"] as const;
 const leadsDetailStatusOptions = ["Valid", "Invalid"] as const;
